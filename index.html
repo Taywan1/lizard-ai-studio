@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12494B">
+  <link rel="icon" type="image/png" href="assets/logo-icon.png">
+  <title>Lizard AI Studio — Thoughtful language work, carefully delivered</title>
+ <meta name="description" content="Lizard AI Studio provides multilingual translations, concise summaries and short-form writing, with human review before delivery.">
+  <style>
+    :root {
+      color-scheme: light;
+      --teal: #12494B;
+      --teal-deep: #0B3436;
+      --ivory: #F4F2EA;
+      --paper: #FBFAF6;
+      --charcoal: #202625;
+      --muted: #68716D;
+      --gold: #B8A16A;
+      --line: rgba(32,38,37,.13);
+      --shadow: 0 24px 70px rgba(11,52,54,.10);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--charcoal); font-family: var(--sans); line-height: 1.65; }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+    .topbar { padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .brand-mark { width:42px; height:42px; display:grid; place-items:center; border:1px solid rgba(184,161,106,.75); border-radius:13px 13px 13px 4px; background:var(--teal); color:var(--ivory); }
+    .brand-mark svg { width:25px; height:25px; }
+    .brand-name { font-size: .88rem; font-weight:750; letter-spacing:.19em; }
+    .brand-sub { display:block; margin-top:1px; color:var(--muted); font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; }
+    .brand {display: flex; align-items: center; text-decoration: none; }
+
+    .brand-logo { display: block; width: 340px; max-width: 100%; height: auto; object-fit: contain; }
+    .nav-link { color:var(--teal); font-size:.84rem; font-weight:650; text-decoration:none; border-bottom:1px solid var(--gold); padding-bottom:4px; }
+    .hero { position:relative; overflow:hidden; margin-top:34px; padding:clamp(38px,7vw,82px); border-radius:5px 44px 5px 5px; color:var(--ivory); background:var(--teal); box-shadow:var(--shadow); }
+    .hero:before { content:""; position:absolute; width:440px; height:440px; right:-130px; top:-190px; border:1px solid rgba(244,242,234,.15); border-radius:50%; box-shadow:0 0 0 35px rgba(244,242,234,.025), 0 0 0 75px rgba(244,242,234,.025); }
+    .hero:after { content:""; position:absolute; right:8%; bottom:-95px; width:240px; height:240px; border:1px solid rgba(184,161,106,.35); transform:rotate(45deg); border-radius:32px; }
+    .eyebrow { display:flex; align-items:center; gap:10px; color:#D7C79F; font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:26px; height:1px; background:var(--gold); }
+    h1 { position:relative; z-index:1; max-width:760px; margin:22px 0 18px; font-family:var(--serif); font-size:clamp(2.65rem,6.2vw,5.4rem); font-weight:400; letter-spacing:-.045em; line-height:1.02; }
+    h1 em { color:#D7C79F; font-weight:400; }
+    .hero-copy { position:relative; z-index:1; max-width:600px; margin:0; color:rgba(244,242,234,.82); font-size:clamp(1rem,1.7vw,1.14rem); }
+    .hero-bottom { position:relative; z-index:1; display:flex; align-items:center; flex-wrap:wrap; gap:14px 28px; margin-top:34px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 21px; border:1px solid var(--gold); border-radius:3px 15px 3px 3px; background:var(--ivory); color:var(--teal-deep); font-size:.84rem; font-weight:750; text-decoration:none; transition:transform .2s, background .2s; }
+    .button:hover { transform:translateY(-2px); background:white; }
+    .hero-note { color:rgba(244,242,234,.68); font-size:.78rem; }
+    .section-intro { display:grid; grid-template-columns:.8fr 1.2fr; gap:48px; padding:82px 0 34px; align-items:start; }
+    .kicker { color:var(--teal); font-size:.7rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; }
+    h2 { margin:10px 0 0; font-family:var(--serif); font-size:clamp(2rem,3.7vw,3.15rem); font-weight:400; letter-spacing:-.035em; line-height:1.1; }
+    .section-intro p { max-width:600px; margin:23px 0 0; color:var(--muted); font-size:1rem; }
+    .services { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0 82px; }
+    .service { min-height:220px; padding:25px 24px; border:1px solid var(--line); background:white; border-radius:3px 24px 3px 3px; }
+    .number { color:var(--gold); font-family:var(--serif); font-size:1.4rem; }
+    .service h3 { margin:22px 0 8px; color:var(--teal); font-size:1.02rem; }
+    .service p { margin:0; color:var(--muted); font-size:.88rem; }
+    .process { display:grid; grid-template-columns:1fr 1fr; gap:60px; padding:64px clamp(24px,5vw,58px); background:var(--ivory); border-radius:4px 34px 4px 4px; }
+    .process h2 { max-width:400px; }
+    .process-lead { max-width:390px; color:var(--muted); }
+    .steps { display:grid; gap:0; }
+    .step { display:grid; grid-template-columns:38px 1fr; gap:14px; padding:16px 0; border-bottom:1px solid var(--line); }
+    .step:last-child { border:0; }
+    .step-no { color:var(--gold); font-family:var(--serif); font-size:1.3rem; }
+    .step strong { display:block; color:var(--teal); font-size:.92rem; }
+    .step span { display:block; margin-top:3px; color:var(--muted); font-size:.84rem; }
+    .trust { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:82px 0; }
+    .trust-card { padding:28px; border:1px solid var(--line); background:white; border-radius:3px 22px 3px 3px; }
+    .trust-card h3 { margin:0 0 10px; color:var(--teal); font-size:1rem; }
+    .trust-card p { margin:0; color:var(--muted); font-size:.88rem; }
+    .about { display:flex; align-items:center; justify-content:space-between; gap:30px; padding:36px; background:var(--teal-deep); color:var(--ivory); border-radius:4px 30px 4px 4px; }
+    .about .kicker { color:#D7C79F; }
+    .about h2 { margin-top:8px; font-size:2.15rem; }
+    .about p { max-width:590px; margin:12px 0 0; color:rgba(244,242,234,.75); font-size:.9rem; }
+    .contact { flex:0 0 auto; }
+    .contact a { display:inline-block; margin:5px 0; color:#E2D3AE; font-size:.88rem; text-decoration:none; border-bottom:1px solid rgba(184,161,106,.65); }
+    footer { display:flex; justify-content:space-between; gap:20px; padding:27px 0 38px; color:var(--muted); font-size:.74rem; }
+    footer a { color:var(--teal); text-decoration:none; }
+    @media (max-width:760px) {
+      .shell { width:min(100% - 30px, 600px); }
+      .topbar { padding:16px 0; }
+      .brand-mark { width:38px; height:38px; }
+      .nav-link { font-size:.76rem; }
+      .hero { margin-top:20px; padding:38px 25px 42px; border-top-right-radius:30px; }
+      .hero:before { right:-260px; }
+      .section-intro { grid-template-columns:1fr; gap:8px; padding:60px 0 20px; }
+      .section-intro p { margin-top:12px; }
+      .services { grid-template-columns:1fr; margin-bottom:58px; }
+      .service { min-height:0; }
+      .service h3 { margin-top:14px; }
+      .process { grid-template-columns:1fr; gap:22px; padding:34px 24px; }
+      .trust { grid-template-columns:1fr; margin:58px 0; }
+      .about { align-items:flex-start; flex-direction:column; padding:28px 24px; }
+      .brand-logo { width: 210px; }
+      footer { flex-direction:column; gap:8px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } *, *:before, *:after { transition:none !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#" aria-label="Lizard-Monk">
+    <img
+        src="assets/logo-horizontal.png"
+        alt="Lizard-Monk"
+        class="brand-logo"
+    >
+  </a>
+      <a class="nav-link" href="https://avolumi.com/agents/lizard-ai-studio-9f35" target="_blank" rel="noopener noreferrer">View on Avolumi ↗</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="eyebrow">Independent AI studio · Brazil</div>
+      <h1 id="hero-title">Language work,<br><em>thoughtfully</em> delivered.</h1>
+      <p class="hero-copy">Clear, concise summaries. Careful translations across multiple languages. Short-form writing shaped around the brief — with a person reviewing every result before delivery.</p>
+      <div class="hero-bottom">
+        <a class="button" href="https://avolumi.com/agents/lizard-ai-studio-9f35" target="_blank" rel="noopener noreferrer">Explore the Avolumi profile <span aria-hidden="true">&nbsp;↗</span></a>
+        <span class="hero-note">Human-reviewed · Requirement-led · Independent</span>
+      </div>
+    </section>
+
+    <section class="section-intro" aria-labelledby="services-title">
+      <div>
+        <div class="kicker">What we do</div>
+        <h2 id="services-title">Small texts.<br>Careful work.</h2>
+      </div>
+      <p>Lizard AI Studio supports focused multilingual language tasks where clarity, format and instructions matter. From translations between different languages to concise summaries and short-form writing, every job follows the buyer’s requested language, length and structure.</p>
+    </section>
+
+    <section class="services" aria-label="Services">
+      <article class="service">
+        <div class="number">01</div>
+        <h3>Summaries</h3>
+        <p>Concise summaries of short English texts, preserving the central ideas and the requested level of detail.</p>
+      </article>
+      <article class="service">
+  <div class="number">02</div>
+  <h3>Multilingual Translation</h3>
+  <p>Translations between multiple languages, with attention to meaning, readability, context and natural phrasing.</p>
+</article>
+      <article class="service">
+        <div class="number">03</div>
+        <h3>Short-form writing</h3>
+        <p>Other short texts written in the language requested by the task, following its brief and format.</p>
+      </article>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div>
+        <div class="kicker">A considered workflow</div>
+        <h2 id="process-title">Technology assists.<br>Human judgment stays.</h2>
+        <p class="process-lead">A structured process helps keep each delivery aligned with the request — without presenting AI output as infallible.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-no">01</div><div><strong>Understand the brief</strong><span>The task’s language, length, format and requirements guide the work.</span></div></div>
+        <div class="step"><div class="step-no">02</div><div><strong>Generate a first draft</strong><span>An AI model prepares a draft from the buyer’s instructions and input.</span></div></div>
+        <div class="step"><div class="step-no">03</div><div><strong>Check the requirements</strong><span>Local validation checks structural requirements, including JSON Schema and length limits where applicable.</span></div></div>
+        <div class="step"><div class="step-no">04</div><div><strong>Review before delivery</strong><span>An independent AI review checks for possible translation errors and unmet requirements. The developer then reads every result before delivery.</span></div></div>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Important information">
+      <article class="trust-card">
+        <h3>Accuracy with transparency</h3>
+        <p>AI-generated text can contain mistakes or miss context. For important use, compare the original and translated text and request clarification when needed.</p>
+      </article>
+      <article class="trust-card">
+        <h3>Privacy matters</h3>
+        <p>Task texts are processed by third-party AI models. Please do not submit confidential, sensitive or personal information.</p>
+      </article>
+    </section>
+
+    <section class="about" aria-labelledby="about-title">
+      <div>
+        <div class="kicker">Behind the studio</div>
+        <h2 id="about-title">Built with care in Brazil.</h2>
+        <p>Lizard AI Studio is independently built and operated by Taywan Luiggi Coelho, an independent developer from Brazil.</p>
+      </div>
+      <div class="contact">
+        <div class="kicker">Get in touch</div>
+        <a href="mailto:taywancacoelho@gmail.com">taywancacoelho@gmail.com</a><br>
+        <a href="https://avolumi.com/agents/lizard-ai-studio-9f35" target="_blank" rel="noopener noreferrer">Avolumi public profile ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>© <span id="year">2026</span> Lizard AI Studio · Independent project</span>
+    <span>Clarity, restraint and human review.</span>
+  </footer>
+</body>
+</html>
